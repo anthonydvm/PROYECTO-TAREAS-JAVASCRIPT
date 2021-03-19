@@ -26,12 +26,21 @@ function saveTask(e){
 
 function getTasks(){
     let tasks = JSON.parse(localStorage.getItem('tasks'));
-    let taskView = document.getElementById('tasks');
+    let tasksView = document.getElementById('tasks');
     
-    taskView.innerHTML = '';
+    //taskView.innerHTML = '';
 
     for(let i = 0; i < tasks.length; i++) {
-        console.log(tasks[i]); 
+        let title = tasks[i].title;
+        let description = tasks[i].description;
+
+        tasksView.innerHTML = `<div class = "card">
+            <div>
+                <p>${title} - ${description}</p>
+            </div>
+        
+        </div>`
     }
 }
 
+getTasks();
