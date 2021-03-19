@@ -10,17 +10,28 @@ function saveTask(e){
         description
     };
 
-    if (localStorage.getItem('tasks') == null){
+    if (localStorage.getItem('tasks') === null){
 
-        let tasks =[];
+        let tasks = [];
         tasks.push(task);
-        localStorage.setItem('task', JSON.stringify(task));
+        localStorage.setItem('tasks', JSON.stringify(tasks));
     } else{
         let tasks = JSON.parse(localStorage.getItem('tasks'));
         tasks.push(task);
-        localStorage.setItem('tasks', JSON.stringify(tasks))
+        localStorage.setItem('tasks', JSON.stringify(tasks));
     }
     
     e.preventDefault();
+}
+
+function getTasks(){
+    let tasks = JSON.parse(localStorage.getItem('tasks'));
+    let taskView = document.getElementById('tasks');
+    
+    taskView.innerHTML = '';
+
+    for(let i = 0; i < tasks.length; i++) {
+        console.log(tasks[i]); 
+    }
 }
 
